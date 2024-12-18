@@ -172,12 +172,44 @@ This project focuses on removing watermarks from images using advanced deep lear
      **锐化**：提升视觉清晰度。
 
 ---
-
 ### **Quick Start | 快速开始**
+
+#### **Environment Setup | 环境配置**
+
+1. **Install Required Packages | 安装必要的依赖**:
+   Use the following command to install all required Python libraries:
+   **使用以下命令安装所有必要的Python库：**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+   The `requirements.txt` file should include the following dependencies:
+   **`requirements.txt` 文件应包含以下依赖：**
+   ```plaintext
+   torch
+   torchvision
+   fastapi
+   uvicorn
+   pillow
+   opencv-python
+   opencv-python-headless
+   numpy
+   ```
+
+2. **Prepare Dataset | 准备数据集**:
+   - Ensure the dataset is structured as follows:
+     **确保数据集按照以下结构组织：**
+     ```plaintext
+     data/
+     ├── train/
+     │   ├── watermarked/   # Folder for input watermarked images
+     │   ├── clean/         # Folder for corresponding clean images
+     └── test/              # Folder for test images
+     ```
 
 #### **Training the Model | 训练模型**
 ```bash
-python main.py --mode train --epochs 100
+python main.py --mode train --epochs 1500
 ```
 
 1. Prepare the training dataset in `data/train/`.
@@ -189,7 +221,7 @@ python main.py --mode train --epochs 100
 
 #### **Testing the Model | 测试模型**
 ```bash
-python main.py --mode test --model_path models/generator_epoch_100.pth --input_image input.jpg --output_image output.jpg
+python main.py --mode test --model_path models/generator_epoch_1500.pth --input_image input.jpg --output_image output.jpg
 ```
 1. Ensure the trained model is in `models/`.
    **确保训练好的模型保存在 `models/` 中。**
@@ -208,6 +240,7 @@ uvicorn app:app --reload --host 0.0.0.0 --port 8000
    **在 `http://localhost:8000/docs` 访问API文档。**
 
 ---
+
 
 ### **Example Results | 示例结果**
 
